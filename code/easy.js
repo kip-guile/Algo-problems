@@ -11,26 +11,35 @@ If k is longer than the length of the linked list, the linked list should not be
 ```
 
 function removeKthLinkedListNode(head, k) {
+  //if list is empty, or target is less than 1, return null
   if (head === null || k < 1) return null
   let curr = head
   let count = 0
+  //traverse list and update count to get the length of the list.
   while (curr != null) {
     curr = curr.next
     count += 1
   }
+  //reset curr
   curr = head
+  //return head if target is greater than count, because it means nothing is meant to be removed
   if (k > count) return head
+  //find the position from the head to the target.
   let kthToLast = count - k
+  // handle case when target is the first node.
+  //if kthtolast === 0, it means target is first node, so move head to next and return head
   if (kthToLast === 0) {
     head = head.next
     return head
   }
+  // traverse the list until the node before the node we want to delete
   let newCount = 0
   while (newCount !== kthToLast - 1) {
     curr = curr.next
     newCount += 1
   }
   console.log(curr.data)
+  // move next to the next node, (skip the node we want to delete): it will get garbage collected.
   curr.next = curr.next.next
   return head
 }

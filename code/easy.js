@@ -57,8 +57,40 @@ var removeDuplicates = function (nums) {
       slow_index += 1
       nums[slow_index] = nums[i]
     }
+    console.log(nums, slow_index, i)
   }
   return slow_index + 1
 }
 
-console.log(removeDuplicates([1, 1, 2])) //2
+console.log(removeDuplicates([1, 1, 1, 3, 4, 4, 5, 2])) //2
+
+/*
+Given a string, find the first non-repeating character in it and return its index. If it doesn't exist, return -1.
+
+Examples:
+
+s = "leetcode"
+return 0.
+
+s = "loveleetcode"
+return 2.
+*/
+
+var firstUniqChar = function (s) {
+  let lookup = {}
+  for (let i = 0; i < s.length; i++) {
+    if (lookup[s[i]]) {
+      lookup[s[i]][0] += 1
+    } else {
+      lookup[s[i]] = [1, i]
+    }
+  }
+  for (const key in lookup) {
+    if (lookup[key][0] === 1) {
+      return lookup[key][1]
+    }
+  }
+  return -1
+}
+
+console.log(firstUniqChar("leetcode"))

@@ -1,4 +1,4 @@
-;```
+/*
 Write a function that receives as input the head node of a linked list and an integer k. Your function should remove the kth node from the end of the linked list and return the head node of the updated list.
 For example, if we have the following linked list:
   (20) -> (19) -> (18) -> (17) -> (16) -> (15) -> (14) -> (13) -> (12) -> (11) -> null
@@ -8,7 +8,7 @@ The head node would refer to the node (20) . Let k = 4 , so our function should 
 So after the function executes, the state of the linked list should be:
 (20) -> (19) -> (18) -> (17) -> (16) -> (15) -> (13) -> (12) -> (11) -> null .
 If k is longer than the length of the linked list, the linked list should not be changed.
-```
+*/
 
 function removeKthLinkedListNode(head, k) {
   //if list is empty, or target is less than 1, return null
@@ -43,3 +43,22 @@ function removeKthLinkedListNode(head, k) {
   curr.next = curr.next.next
   return head
 }
+
+/*
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+*/
+
+var removeDuplicates = function (nums) {
+  let slow_index = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] !== nums[slow_index]) {
+      slow_index += 1
+      nums[slow_index] = nums[i]
+    }
+  }
+  return slow_index + 1
+}
+
+console.log(removeDuplicates([1, 1, 2])) //2

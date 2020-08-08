@@ -62,15 +62,18 @@ Example 2:
 Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 30 Expected Output: [[6, 9, 15], [7, 8, 15]]
 */
 
+//the idea is there are 3 numbers in the arr, that add up to the target, beacuse the arr is soted,
+//for every index, loop through the array and check if the item on that index plus the item on every
+//other index plus
 function threeNumberSum(arr, target) {
   let res = []
   for (let i = 0; i < arr.length; i++) {
     let lookup = new Set()
-    let check = target - arr[i]
+    let firstremainder = target - arr[i]
     for (let j = i + 1; j < arr.length; j++) {
-      let newcheck = check - arr[j]
-      if (lookup.has(newcheck)) {
-        res.push([arr[i], newcheck, arr[j]].sort((a, b) => a - b))
+      let secondremainder = firstremainder - arr[j]
+      if (lookup.has(secondremainder)) {
+        res.push([arr[i], secondremainder, arr[j]].sort((a, b) => a - b))
       } else {
         lookup.add(arr[j])
       }
@@ -79,5 +82,5 @@ function threeNumberSum(arr, target) {
   return res
 }
 
-console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
-console.log(threeNumberSum([1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 30))
+// console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
+// console.log(threeNumberSum([1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 30))

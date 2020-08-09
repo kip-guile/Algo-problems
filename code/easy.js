@@ -130,3 +130,24 @@ var islandPerimeter = function (grid) {
 }
 
 console.log(islandPerimeter(grid))
+
+/*
+Find consecutive ones
+*/
+
+var findMaxConsecutiveOnes = function (nums) {
+  let arr = []
+  let count = 0
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] === 1) {
+      arr.push(1)
+    } else {
+      if (arr.length > count) {
+        count = arr.length
+      }
+      arr = []
+    }
+  }
+  if (arr.length > count) return arr.length
+  return count
+}

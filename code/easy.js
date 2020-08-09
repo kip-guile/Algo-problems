@@ -151,3 +151,22 @@ var findMaxConsecutiveOnes = function (nums) {
   if (arr.length > count) return arr.length
   return count
 }
+
+/*
+Find count of numbers with even number of digits
+*/
+
+var findNumbers = function (nums) {
+  let evenCount = 0
+  for (let i = 0; i < nums.length; i++) {
+    let digiCount = 0
+    while (nums[i] >= 1) {
+      nums[i] = nums[i] / 10
+      digiCount += 1
+    }
+    if (digiCount % 2 === 0) {
+      evenCount += 1
+    }
+  }
+  return evenCount
+}

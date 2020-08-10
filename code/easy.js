@@ -170,3 +170,53 @@ var findNumbers = function (nums) {
   }
   return evenCount
 }
+
+/*Given an array of integers A sorted in non-decreasing order, return an array of the squares of each number, also in sorted non-decreasing order.
+
+
+
+Example 1:
+
+Input: [-4,-1,0,3,10]
+Output: [0,1,9,16,100]
+*/
+
+var sortedSquares = function (A) {
+  for (let i = 0; i < A.length; i++) {
+    A[i] = A[i] * A[i]
+  }
+  return A.sort((a, b) => a - b)
+}
+
+// Given a fixed length array arr of integers, duplicate each occurrence of zero, shifting the remaining elements to the right.
+
+// Note that elements beyond the length of the original array are not written.
+
+// Do the above modifications to the input array in place, do not return anything from your function.
+
+// Example 1:
+
+// Input: [1, 0, 2, 3, 0, 4, 5, 0]
+// Output: null
+// Explanation: After calling your function, the input array is modified to: [1, 0, 0, 2, 3, 0, 0, 4]
+
+var duplicateZeros = function (arr) {
+  let newArr = []
+  arr.forEach((el) => {
+    newArr.push(el)
+  })
+  let temp = 0
+  let i = 0
+  while (i < arr.length) {
+    if (!newArr[temp]) {
+      arr[i] = 0
+      i += 1
+      if (i < arr.length) arr[i] = 0
+    } else {
+      arr[i] = newArr[temp]
+    }
+    temp += 1
+    i += 1
+  }
+  console.log(arr)
+}

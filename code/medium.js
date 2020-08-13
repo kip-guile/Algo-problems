@@ -4,17 +4,17 @@ balanced brackets (Hackerrank)
 
 function balancedBrackets(string) {
   let stack = []
-  let open = ["[", "{", "|", "("]
-  let close = ["]", "}", "|", ")"]
+  let open = ['[', '{', '|', '(']
+  let close = [']', '}', '|', ')']
   for (let i = 0; i < string.length; i++) {
     //because the string can contain other chars besides brackets, check that the char is an open bracket
     if (open.includes(string[i])) {
       //handle open brackets
       // handle the |, if char is |, and the stack isnt empty and, the last item in stack is |, pop stack
       if (
-        string[i] === "|" &&
+        string[i] === '|' &&
         stack.length > 0 &&
-        stack[stack.length - 1] === "|"
+        stack[stack.length - 1] === '|'
       ) {
         stack.pop()
         // else push the char (open bracket) into stack
@@ -84,3 +84,35 @@ function threeNumberSum(arr, target) {
 
 // console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0))
 // console.log(threeNumberSum([1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 30))
+
+// Given a non - empty array of integers, return the k most frequent elements.
+
+//   Example 1:
+
+// Input: nums = [1, 1, 1, 2, 2, 3], k = 2
+// Output: [1, 2]
+
+var topKFrequent = function (nums, k) {
+  let lookup = {}
+  for (let i = 0; i < nums.length; i++) {
+    if (lookup[nums[i]] !== undefined) {
+      lookup[nums[i]] += 1
+    } else {
+      lookup[nums[i]] = 1
+    }
+  }
+  let freqs = []
+  for (let i = 0; i < k; i++) {
+    let max = 0
+    let newkey
+    for (const key in lookup) {
+      if (lookup[key] > max) {
+        max = lookup[key]
+        newkey = key
+      }
+    }
+    freqs.push(newkey)
+    delete lookup[newkey]
+  }
+  return freqs
+}

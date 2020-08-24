@@ -10,9 +10,15 @@ So after the function executes, the state of the linked list should be:
 If k is longer than the length of the linked list, the linked list should not be changed.
 */
 
+//strategy:
+//first get length of list
+//then get the distance of the kth node from the head, by subtracting kth node from head
+//traverse the list till we get to the node before kth node, then move the next over
+
 function removeKthLinkedListNode(head, k) {
   //if list is empty, or target is less than 1, return null
   if (head === null || k < 1) return null
+  //initializations
   let curr = head
   let count = 0
   //traverse list and update count to get the length of the list.

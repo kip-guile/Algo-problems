@@ -62,9 +62,12 @@ Example 2:
 Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 15], 30 Expected Output: [[6, 9, 15], [7, 8, 15]]
 */
 
-//the idea is there are 3 numbers in the arr, that add up to the target, beacuse the arr is soted,
-//for every index, loop through the array and check if the item on that index plus the item on every
-//other index plus
+//the idea is there are 3 numbers in the arr, that add up to the target, so loop through the array
+//for every index, find the result of the target minus element at that index
+//then loop through the array again and check if the result minus that element at that new index is in the lookup table
+//if it is, push [i, j, and second remainder] into res
+// else, add arr[j] to lookup. Idea being that we'll be adding elements to the lookup and at some point,
+// we'll come accross three indexes such that i, j, + secondremainder (if it is in lookup) will equal target
 function threeNumberSum(arr, target) {
   let res = []
   for (let i = 0; i < arr.length; i++) {

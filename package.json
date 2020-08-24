@@ -1,0 +1,20 @@
+{
+  "name": "algo-solutions",
+  "version": "1.0.0",
+  "description": "Solutions to algorithmic problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kip-guile/Algo-problems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kip-guile/Algo-problems/issues"
+  },
+  "homepage": "https://github.com/kip-guile/Algo-problems#readme",
+  "devDependencies": {}
+}

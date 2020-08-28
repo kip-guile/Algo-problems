@@ -119,3 +119,24 @@ var topKFrequent = function (nums, k) {
   }
   return freqs
 }
+
+/* Task: Get the length of the longest sentence in a given paragraph. 
+Sentences are marked by periods(.), commas(,) and exclamation points(!).
+*/
+const S =
+  'This  is..Some other phrase. . x D. This is the longest sentence at eight words.'
+
+function solution(S) {
+  const lengths = S.split(/[.,!]/).map((sentenceArr) => {
+    const onlyWords = sentenceArr.split(' ').filter((word) => word.length > 0)
+    return onlyWords.length
+  })
+
+  const maxNumOfWords = Math.max(...lengths)
+
+  console.log(maxNumOfWords)
+
+  return maxNumOfWords
+}
+
+// solution(S)
